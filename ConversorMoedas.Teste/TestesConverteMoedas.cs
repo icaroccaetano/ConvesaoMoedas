@@ -15,5 +15,16 @@ namespace ConversorMoedas.Teste
             //Assert
             Assert.Equal(243.25m, result);
         }
+
+        [Fact]
+        public void Dado15ReaisE47CentsDeveRetornar0IenesE80Cents()
+        {
+            //Arrange
+            ConverteMoedas converter = new ConverteMoedas();
+            //Action
+            var result = converter.ConverterReal(15.47m, 3);
+            //Assert
+            Assert.Equal(0.80m, result);
+        }
     }
 }
