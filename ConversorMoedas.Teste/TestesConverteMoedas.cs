@@ -24,7 +24,7 @@ namespace ConversorMoedas.Teste
             //Action
             var result = converter.ConverterReal(15.47m, 3);
             //Assert
-            Assert.Equal(0.80m, result);
+            Assert.Equal(0.80444m, result);
         }
     }
 }

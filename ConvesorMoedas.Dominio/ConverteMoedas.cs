@@ -37,5 +37,10 @@ namespace ConvesorMoedas.Dominio
                     return -1;
             }
         }
+
+        public void ImprimirValorFinal (decimal valor)
+        {
+            
+        }
     }
 }
