@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using System.Globalization;
+using System.Reflection;
 
 namespace ConvesorMoedas.Dominio
 {
@@ -22,7 +23,7 @@ namespace ConvesorMoedas.Dominio
 
         public void Converter (decimal valor, int moeda)
         {
-            ImprimirValorFinal(ConverterReal(valor, moeda));    
+            ImprimirValorFinal(ConverterReal(valor, moeda), moeda);    
         }
 
         private decimal ConverterReal (decimal valorEmReal, int moedaConverter)
@@ -49,9 +50,28 @@ namespace ConvesorMoedas.Dominio
             return ConverterReal (valorEmReal, moedaConverter);
         }
 
-        private void ImprimirValorFinal (decimal valor)
+        private void ImprimirValorFinal (decimal valor, int moedaConverter)
         {
-            Console.WriteLine(valor.ToString("C", euro));
+            switch (moedaConverter)
+            {
+                case 0: // Real
+                    Console.WriteLine(valor.ToString("C", real));
+                    break;
+                case 1: // Dolar
+                    Console.WriteLine(valor.ToString("C", dolar));
+                    break;
+                case 2: // Libra
+                    Console.WriteLine(valor.ToString("C", libra));
+                    break;
+                case 3: // Iene
+                    Console.WriteLine(valor.ToString("C", iene));
+                    break;
+                case 4: // Euro
+                    Console.WriteLine(valor.ToString("C", euro));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
