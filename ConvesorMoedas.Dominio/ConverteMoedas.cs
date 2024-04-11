@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Design;
+using System.Globalization;
 
 namespace ConvesorMoedas.Dominio
 {
@@ -10,7 +11,7 @@ namespace ConvesorMoedas.Dominio
         CultureInfo iene = new CultureInfo("CHI", false);  // 3
         CultureInfo euro = new CultureInfo("EUR", false);  // 4
 
-        void inicializaMoedas ()
+        public ConverteMoedas ()
         {
             real.NumberFormat.CurrencySymbol = "R$";
             dolar.NumberFormat.CurrencySymbol = "$";
@@ -19,7 +20,12 @@ namespace ConvesorMoedas.Dominio
             euro.NumberFormat.CurrencySymbol = "£";
         }
 
-        public decimal ConverterReal (decimal valorEmReal, int moedaConverter)
+        public void Converter (decimal valor, int moeda)
+        {
+            ImprimirValorFinal(ConverterReal(valor, moeda));    
+        }
+
+        private decimal ConverterReal (decimal valorEmReal, int moedaConverter)
         {
             switch (moedaConverter) 
             {
@@ -38,9 +44,14 @@ namespace ConvesorMoedas.Dominio
             }
         }
 
-        public void ImprimirValorFinal (decimal valor)
+        public decimal ConverterTester (decimal valorEmReal, int moedaConverter)
         {
-            
+            return ConverterReal (valorEmReal, moedaConverter);
+        }
+
+        private void ImprimirValorFinal (decimal valor)
+        {
+            Console.WriteLine(valor.ToString("C", euro));
         }
     }
 }

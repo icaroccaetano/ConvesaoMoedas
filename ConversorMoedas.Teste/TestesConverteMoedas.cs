@@ -11,7 +11,7 @@ namespace ConversorMoedas.Teste
             //Arrange
             ConverteMoedas converter = new ConverteMoedas();
             //Action
-            var result = converter.ConverterReal(35, 2);
+            var result = converter.ConverterTester(35, 2);
             //Assert
             Assert.Equal(243.25m, result);
         }
@@ -22,7 +22,7 @@ namespace ConversorMoedas.Teste
             //Arrange
             ConverteMoedas converter = new ConverteMoedas();
             //Action
-            var result = converter.ConverterReal(15.47m, 3);
+            var result = converter.ConverterTester(15.47m, 3);
             //Assert
             Assert.Equal(0.80444m, result);
         }
